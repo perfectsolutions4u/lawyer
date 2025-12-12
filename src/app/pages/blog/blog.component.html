@@ -1,0 +1,37 @@
+<section class="page-header">
+  <div class="container" *ngIf="siteData">
+    <h1>{{ siteData.blog.title }}</h1>
+    <p>{{ siteData.blog.subtitle }}</p>
+  </div>
+</section>
+
+<section class="blog-section container" *ngIf="siteData">
+  <div class="blog-grid" id="blogGrid">
+    <article *ngFor="let post of siteData.blog.items" class="blog-card">
+      <div class="blog-image" [style.background-image]="'url(' + post.image + ')'"></div>
+      <div class="blog-content">
+        <div class="blog-meta">
+          <span class="blog-category">{{ post.category }}</span>
+          <span class="blog-date">
+            <i class="far fa-calendar"></i>
+            {{ post.date }}
+          </span>
+          <span class="blog-read-time">
+            <i class="far fa-clock"></i>
+            {{ post.readTime }}
+          </span>
+        </div>
+        <h3>{{ post.title }}</h3>
+        <p class="blog-excerpt">{{ post.excerpt }}</p>
+        <div class="blog-tags">
+          <span *ngFor="let tag of post.tags" class="blog-tag">{{ tag }}</span>
+        </div>
+        <a [routerLink]="'/blog/' + post.id" class="blog-link">
+          اقرأ المزيد
+          <i class="fas fa-arrow-left"></i>
+        </a>
+      </div>
+    </article>
+  </div>
+</section>
+

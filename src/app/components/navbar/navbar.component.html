@@ -1,0 +1,36 @@
+<nav [class.scrolled]="isScrolled" class="navbar">
+  <div class="navbar-container">
+    <!-- Logo on left side -->
+    <div class="navbar-logo">
+      <img src="../../../assets/logo.webp" alt="logo" class="w-100 h-100" />
+    </div>
+
+    <!-- Desktop menu on right side -->
+    <ul class="navbar-menu" [class.active]="mobileMenuOpen">
+      <li *ngFor="let item of navItems">
+        <a
+          (click)="scrollToSection(item.link); $event.preventDefault()"
+          [routerLink]="item.link"
+          routerLinkActive="active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="nav-link"
+        >
+          {{ item.label }}
+        </a>
+      </li>
+    </ul>
+
+    <!-- Hamburger icon for mobile -->
+    <button
+      class="navbar-toggle"
+      (click)="toggleMobileMenu()"
+      type="button"
+      [attr.aria-expanded]="mobileMenuOpen"
+      aria-label="Toggle menu"
+    >
+      <span class="hamburger-line" [class.active]="mobileMenuOpen"></span>
+      <span class="hamburger-line" [class.active]="mobileMenuOpen"></span>
+      <span class="hamburger-line" [class.active]="mobileMenuOpen"></span>
+    </button>
+  </div>
+</nav>

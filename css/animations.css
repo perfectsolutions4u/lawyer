@@ -1,0 +1,317 @@
+/* ============================================
+   Animations & Parallax Styles
+   ============================================ */
+
+/* Base Animation Classes */
+[data-animate] {
+    opacity: 0;
+    transition: all var(--transition-slower) cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.animated {
+    opacity: 1 !important;
+}
+
+/* Fade In Up Animation */
+.animate-fadeInUp {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+}
+
+[data-animate="fadeInUp"] {
+    transform: translateY(50px);
+}
+
+/* Fade In Right Animation */
+.animate-fadeInRight {
+    opacity: 1 !important;
+    transform: translateX(0) !important;
+}
+
+[data-animate="fadeInRight"] {
+    transform: translateX(-50px);
+}
+
+/* Fade In Left Animation */
+.animate-fadeInLeft {
+    opacity: 1 !important;
+    transform: translateX(0) !important;
+}
+
+[data-animate="fadeInLeft"] {
+    transform: translateX(50px);
+}
+
+/* Scale Animation */
+.animate-scale {
+    opacity: 1 !important;
+    transform: scale(1) !important;
+}
+
+[data-animate="scale"] {
+    transform: scale(0.8);
+}
+
+/* Rotate Animation */
+.animate-rotate {
+    opacity: 1 !important;
+    transform: rotate(0deg) !important;
+}
+
+[data-animate="rotate"] {
+    transform: rotate(-10deg);
+}
+
+/* Hero Title Animation */
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.hero-content h1 {
+    background: linear-gradient(90deg, #fff 0%, #ccc 50%, #fff 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 3s ease infinite;
+}
+
+.hero-content h1 .line {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUpLine 0.8s ease-out forwards;
+}
+
+.hero-content h1 .line:nth-child(1) { animation-delay: 0.3s; }
+.hero-content h1 .line:nth-child(2) { animation-delay: 0.6s; }
+.hero-content h1 .line:nth-child(3) { animation-delay: 0.9s; }
+
+@keyframes fadeInUpLine {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Floating Icons */
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+.service-icon {
+    animation: float 3s ease-in-out infinite;
+}
+
+.service-card:nth-child(1) .service-icon { animation-delay: 0s; }
+.service-card:nth-child(2) .service-icon { animation-delay: 0.5s; }
+.service-card:nth-child(3) .service-icon { animation-delay: 1s; }
+.service-card:nth-child(4) .service-icon { animation-delay: 1.5s; }
+.service-card:nth-child(5) .service-icon { animation-delay: 2s; }
+.service-card:nth-child(6) .service-icon { animation-delay: 2.5s; }
+
+/* Pulse Animation */
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.05);
+        opacity: 0.9;
+    }
+}
+
+.pulse {
+    animation: pulse 2s ease-in-out infinite;
+}
+
+/* Shake Animation */
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+.shake {
+    animation: shake 0.5s ease-in-out;
+}
+
+/* Hover Effects */
+.service-card,
+.project-card,
+.review-card,
+.team-member,
+.value-card {
+    transition: transform var(--transition-base), opacity var(--transition-slower), box-shadow var(--transition-base);
+}
+
+.service-card:hover,
+.project-card:hover,
+.review-card:hover,
+.team-member:hover,
+.value-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 0 20px 40px rgba(125, 95, 255, 0.3);
+}
+
+/* Parallax Elements */
+[data-parallax] {
+    will-change: transform;
+    transition: transform var(--transition-fast) ease-out;
+}
+
+/* Smooth Scroll */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Loading Animation */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading {
+    animation: spin 1s linear infinite;
+}
+
+/* Stagger Animation for Lists */
+.stagger-item {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all var(--transition-medium);
+}
+
+.stagger-item.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Count Up Animation */
+.stat-number {
+    transition: all var(--transition-base);
+}
+
+.stat-number.counted {
+    animation: countUp 0.5s ease-out;
+}
+
+@keyframes countUp {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Text Reveal Animation */
+@keyframes textReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.text-reveal {
+    overflow: hidden;
+}
+
+.text-reveal span {
+    display: inline-block;
+    animation: textReveal 0.6s ease-out forwards;
+    opacity: 0;
+}
+
+/* Glow Effect */
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 20px rgba(125, 95, 255, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 40px rgba(125, 95, 255, 0.8);
+    }
+}
+
+.glow {
+    animation: glow 2s ease-in-out infinite;
+}
+
+/* Slide In from Right (RTL) */
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.slide-in-right {
+    animation: slideInRight 0.8s ease-out;
+}
+
+/* Slide In from Left (RTL) */
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-100px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.slide-in-left {
+    animation: slideInLeft 0.8s ease-out;
+}
+
+/* Fade In */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fade-in {
+    animation: fadeIn 1s ease-out;
+}
+
+/* Reduce motion for users who prefer it */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+

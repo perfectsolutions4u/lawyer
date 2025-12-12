@@ -1,0 +1,46 @@
+<article class="project-detail container" *ngIf="project">
+  <div class="project-detail-header">
+    <h1>{{ project.title }}</h1>
+    <div class="project-detail-meta">
+      <span>{{ project.date }}</span>
+      <div class="tags">
+        <span *ngFor="let tag of project.tags">{{ tag }}</span>
+      </div>
+    </div>
+  </div>
+  <div class="project-detail-image" [style.background-image]="'url(' + project.image + ')'"></div>
+  <div class="project-detail-content">
+    <p>{{ project.description }}</p>
+    <div *ngIf="project.details" class="project-details">
+      <h2>تفاصيل المشروع</h2>
+      <div class="detail-grid">
+        <div class="detail-item">
+          <strong>العميل:</strong>
+          <span>{{ project.details.client }}</span>
+        </div>
+        <div class="detail-item">
+          <strong>المدة:</strong>
+          <span>{{ project.details.duration }}</span>
+        </div>
+        <div class="detail-item">
+          <strong>الفريق:</strong>
+          <span>{{ project.details.team }}</span>
+        </div>
+        <div class="detail-item">
+          <strong>التقنيات:</strong>
+          <span>{{ project.details.technologies?.join(', ') }}</span>
+        </div>
+      </div>
+      <div *ngIf="project.details.features" class="project-features">
+        <h3>المميزات</h3>
+        <ul>
+          <li *ngFor="let feature of project.details.features">{{ feature }}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="project-detail-footer">
+    <a routerLink="/projects" class="btn btn-outline">← العودة للمشاريع</a>
+  </div>
+</article>
+

@@ -1,0 +1,12 @@
+/* Account for fixed navbar */
+main {
+  min-height: calc(100vh - 200px);
+  padding-top: 0; /* Hero slider starts below navbar */
+}
+
+/* Ensure hero slider is visible below navbar */
+app-hero-slider {
+  display: block;
+  margin-top: 0;
+}
+

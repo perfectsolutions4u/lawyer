@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/pages/dashboard/dashboard.component.ts", "src/app/pages/dashboard/dashboard.component.html"],
+  "sourcesContent": ["import { Component } from '@angular/core';\nimport { CommonModule } from '@angular/common';\n\n@Component({\n  selector: 'app-dashboard',\n  standalone: true,\n  imports: [CommonModule],\n  templateUrl: './dashboard.component.html',\n  styleUrls: ['./dashboard.component.css']\n})\nexport class DashboardComponent {}\n\n", "<section class=\"dashboard-section container\">\r\n  <h1>لوحة التحكم</h1>\r\n  <p>مرحباً بك في لوحة التحكم</p>\r\n</section>\r\n\r\n"],
+  "mappings": ";;;;;;;;;;;AAUM,IAAO,qBAAP,MAAO,oBAAkB;;qCAAlB,qBAAkB;EAAA;yEAAlB,qBAAkB,WAAA,CAAA,CAAA,eAAA,CAAA,GAAA,YAAA,MAAA,UAAA,CAAA,6BAAA,GAAA,OAAA,GAAA,MAAA,GAAA,QAAA,CAAA,CAAA,GAAA,qBAAA,WAAA,CAAA,GAAA,UAAA,SAAA,4BAAA,IAAA,KAAA;AAAA,QAAA,KAAA,GAAA;ACV/B,MAAA,yBAAA,GAAA,WAAA,CAAA,EAA6C,GAAA,IAAA;AACvC,MAAA,iBAAA,GAAA,+DAAA;AAAW,MAAA,uBAAA;AACf,MAAA,yBAAA,GAAA,GAAA;AAAG,MAAA,iBAAA,GAAA,8HAAA;AAAwB,MAAA,uBAAA,EAAI;;oBDIrB,YAAY,GAAA,QAAA,CAAA,gJAAA,EAAA,CAAA;;;6EAIX,oBAAkB,EAAA,WAAA,sBAAA,UAAA,sDAAA,YAAA,GAAA,CAAA;AAAA,GAAA;",
+  "names": []
+}

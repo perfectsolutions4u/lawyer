@@ -1,0 +1,82 @@
+<section class="hero-slider" [@slideAnimation]="animationState">
+  <div class="hero-slide">
+    <!-- Background image with gradient overlay -->
+    <div
+      class="slide-image"
+      [style.background-image]="'url(' + currentSlide.imageUrl + ')'"
+    >
+      <div class="gradient-overlay"></div>
+    </div>
+
+    <!-- Content container -->
+    <div class="hero-content">
+      <div class="hero-text">
+        <!-- Badge -->
+        <!-- <span class="slide-badge">{{ currentSlide.badge }}</span> -->
+
+        <!-- Title -->
+        <h1 class="slide-title">{{ currentSlide.title }}</h1>
+
+        <!-- Description -->
+        <!-- <p class="slide-description">{{ currentSlide.description }}</p> -->
+
+        <!-- CTA Button -->
+        <a
+          (click)="
+            scrollToSection(currentSlide.ctaLink); $event.preventDefault()
+          "
+          [href]="currentSlide.ctaLink"
+          class="slide-cta btn-primary"
+        >
+          {{ currentSlide.ctaLabel }}
+        </a>
+      </div>
+    </div>
+
+    <!-- Navigation arrows -->
+    <button
+      class="slider-arrow slider-arrow-prev"
+      (click)="prevSlide()"
+      aria-label="Previous slide"
+    >
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <path d="M15 18l-6-6 6-6" />
+      </svg>
+    </button>
+
+    <button
+      class="slider-arrow slider-arrow-next"
+      (click)="nextSlide()"
+      aria-label="Next slide"
+    >
+      <svg
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+      >
+        <path d="M9 18l6-6-6-6" />
+      </svg>
+    </button>
+
+    <!-- Bullet pagination -->
+    <div class="slider-pagination">
+      <button
+        *ngFor="let slide of slides; let i = index"
+        class="pagination-bullet"
+        [class.active]="i === activeSlideIndex"
+        (click)="goToSlide(i)"
+        [attr.aria-label]="'Go to slide ' + (i + 1)"
+      ></button>
+    </div>
+  </div>
+</section>

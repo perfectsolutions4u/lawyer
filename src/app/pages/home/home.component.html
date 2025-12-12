@@ -1,0 +1,186 @@
+<!-- <header>
+  <div class="wave-bg"></div>
+  <div class="container hero-content" *ngIf="siteData">
+    <h1 [innerHTML]="siteData.hero.title"></h1>
+    <p>{{ siteData.hero.subtitle }}</p>
+    <div class="hero-btns">
+      <a *ngFor="let btn of siteData.hero.buttons" 
+         [routerLink]="btn.url.replace('.html', '')" 
+         [class]="'btn btn-' + btn.type">
+        {{ btn.text }}
+      </a>
+    </div>
+  </div>
+</header> -->
+
+<app-hero-slider></app-hero-slider>
+
+<section class="services container" *ngIf="siteData">
+  <h2 class="section-title">{{ siteData.services.title }}</h2>
+  <div class="services-grid">
+    <div *ngFor="let service of siteData.services.items" class="service-card">
+      <app-service-icon
+        [iconName]="service.icon"
+        class="service-icon"
+      ></app-service-icon>
+      <h3>{{ service.title }}</h3>
+      <p>{{ service.description }}</p>
+    </div>
+  </div>
+</section>
+
+<section class="projects container" *ngIf="siteData">
+  <h2 class="section-title">{{ siteData.projects.title }}</h2>
+  <div class="projects-list">
+    <div
+      *ngFor="let project of siteData.projects.items.slice(0, 5)"
+      class="project-card"
+      [class]="project.imagePosition === 'left' ? 'image-left' : ''"
+    >
+      <div class="project-info" *ngIf="project.imagePosition !== 'left'">
+        <div class="tags">
+          <span *ngFor="let tag of project.tags">{{ tag }}</span>
+        </div>
+        <h3>{{ project.title }}</h3>
+        <p style="color: #aaa; margin-bottom: 20px">
+          {{ project.description }}
+        </p>
+        <a
+          [routerLink]="'/project/' + project.id"
+          class="btn btn-primary"
+          style="align-self: flex-start"
+          >عرض المشروع</a
+        >
+      </div>
+
+      <div
+        class="project-img"
+        [style.background-image]="'url(' + project.image + ')'"
+      ></div>
+
+      <div class="project-info" *ngIf="project.imagePosition === 'left'">
+        <div class="tags">
+          <span *ngFor="let tag of project.tags">{{ tag }}</span>
+        </div>
+        <h3>{{ project.title }}</h3>
+        <p style="color: #aaa; margin-bottom: 20px">
+          {{ project.description }}
+        </p>
+        <a
+          [routerLink]="'/project/' + project.id"
+          class="btn btn-primary"
+          style="align-self: flex-start"
+          >عرض المشروع</a
+        >
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="timeline-section container" *ngIf="siteData">
+  <h2 class="section-title">{{ siteData.timeline.title }}</h2>
+  <div class="timeline">
+    <div *ngFor="let item of siteData.timeline.items" class="timeline-item">
+      <div class="timeline-content">
+        <span class="timeline-year">{{ item.year }}</span>
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.description }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section" *ngIf="siteData">
+  <div class="container">
+    <h2>{{ siteData.cta.title }}</h2>
+    <p style="color: #aaa; margin: 15px 0 25px">{{ siteData.cta.subtitle }}</p>
+    <a
+      [routerLink]="siteData.cta.button.url.replace('.html', '')"
+      class="btn btn-primary"
+    >
+      {{ siteData.cta.button.text }}
+    </a>
+  </div>
+</section>
+
+<section class="team-section container" *ngIf="siteData?.team">
+  <h2 class="section-title mb-3">{{ siteData?.team?.title }}</h2>
+  <p class="team-subtitle" *ngIf="siteData?.team?.subtitle">
+    {{ siteData?.team?.subtitle }}
+  </p>
+  <div class="team-grid mt-5" *ngIf="siteData?.team?.members">
+    <div *ngFor="let member of siteData?.team?.members" class="team-card">
+      <div class="team-image-wrapper">
+        <div
+          class="team-image"
+          [style.background-image]="'url(' + (member.image || '') + ')'"
+        >
+          <div class="team-overlay"></div>
+        </div>
+        <div class="team-initial" *ngIf="!member.image">
+          {{ member.name.charAt(0) }}
+        </div>
+      </div>
+      <div class="team-info">
+        <h3 class="team-name">{{ member.name }}</h3>
+        <p class="team-position">{{ member.position }}</p>
+        <p class="team-specialization">{{ member.specialization }}</p>
+        <span class="team-experience">{{ member.experience }}</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- <section class="testimonials container" *ngIf="siteData">
+  <h2 class="section-title">{{ siteData.testimonials.title }}</h2>
+  <div class="review-grid">
+    <div
+      *ngFor="let testimonial of siteData.testimonials.items"
+      class="review-card"
+    >
+      <div class="stars">{{ "★".repeat(testimonial.rating) }}</div>
+      <p>"{{ testimonial.text }}"</p>
+      <div class="user-info">
+        <div class="user-avatar"></div>
+        <div>
+          <strong>{{ testimonial.name }}</strong
+          ><br />
+          <small style="color: #777">{{ testimonial.position }}</small>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<section class="blog-preview container" *ngIf="siteData">
+  <h2 class="section-title">أحدث المقالات</h2>
+  <div class="blog-preview-grid">
+    <article
+      *ngFor="let post of siteData.blog.items.slice(0, 3)"
+      class="blog-preview-card"
+    >
+      <div
+        class="blog-preview-image"
+        [style.background-image]="'url(' + post.image + ')'"
+      ></div>
+      <div class="blog-preview-content">
+        <div class="blog-preview-meta">
+          <span class="blog-preview-category">{{ post.category }}</span>
+          <span style="display: flex; align-items: center; gap: 5px">
+            <i class="far fa-calendar"></i>
+            {{ post.date }}
+          </span>
+        </div>
+        <h3>{{ post.title }}</h3>
+        <p class="blog-preview-excerpt">{{ post.excerpt }}</p>
+        <a [routerLink]="'/blog/' + post.id" class="blog-preview-link">
+          اقرأ المزيد
+          <i class="fas fa-arrow-left"></i>
+        </a>
+      </div>
+    </article>
+  </div>
+  <div style="text-align: center; margin-top: 40px">
+    <a routerLink="/blog" class="btn btn-outline">عرض جميع المقالات</a>
+  </div>
+</section>

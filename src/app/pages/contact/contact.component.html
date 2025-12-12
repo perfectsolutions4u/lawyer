@@ -1,0 +1,145 @@
+<section class="page-header">
+  <div class="container" *ngIf="siteData">
+    <h1>{{ siteData.contact.title }}</h1>
+    <p>{{ siteData.contact.subtitle }}</p>
+  </div>
+</section>
+
+<section class="contact-section container" *ngIf="siteData">
+  <div class="contact-form">
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="name">الاسم</label>
+        <input type="text" id="name" name="name" formControlName="name" />
+        <div *ngIf="name?.invalid && name?.touched" class="error-message">
+          <span *ngIf="name?.errors?.['required']">الاسم مطلوب</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">البريد الإلكتروني</label>
+        <input type="email" id="email" name="email" formControlName="email" />
+        <div *ngIf="email?.invalid && email?.touched" class="error-message">
+          <span *ngIf="email?.errors?.['required']"
+            >البريد الإلكتروني مطلوب</span
+          >
+          <span *ngIf="email?.errors?.['email']"
+            >البريد الإلكتروني غير صحيح</span
+          >
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="subject">الموضوع</label>
+        <input
+          type="text"
+          id="subject"
+          name="subject"
+          formControlName="subject"
+        />
+        <div *ngIf="subject?.invalid && subject?.touched" class="error-message">
+          <span *ngIf="subject?.errors?.['required']">الموضوع مطلوب</span>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="message">الرسالة</label>
+        <textarea
+          id="message"
+          name="message"
+          formControlName="message"
+        ></textarea>
+        <div *ngIf="message?.invalid && message?.touched" class="error-message">
+          <span *ngIf="message?.errors?.['required']">الرسالة مطلوبة</span>
+        </div>
+      </div>
+      <button
+        type="submit"
+        class="btn btn-primary"
+        [disabled]="contactForm.invalid"
+      >
+        إرسال الرسالة
+      </button>
+    </form>
+  </div>
+
+  <div class="contact-info">
+    <div *ngFor="let info of siteData.contact.info" class="contact-card">
+      <!-- Location - Clickable to open Google Maps -->
+      <div *ngIf="info.icon === 'location'" class="contact-link">
+        <div class="contact-icon-wrapper">
+          <svg
+            class="contact-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+          >
+            <path
+              d="M12 0C7.589 0 4 3.589 4 8c0 6.896 8 16 8 16s8-9.104 8-16c0-4.411-3.589-8-8-8zm0 11c-1.657 0-3-1.343-3-3s1.343-3 3-3 3 1.343 3 3-1.343 3-3 3z"
+            />
+          </svg>
+        </div>
+        <div class="contact-content">
+          <h3>{{ info.title }}</h3>
+          <a
+            class="contact-value"
+            *ngFor="let content of info.content"
+            (click)="openGoogleMaps(content)"
+            title="افتح في Google Maps"
+          >
+            {{ content }}
+          </a>
+        </div>
+      </div>
+
+      <!-- Phone - Clickable to call -->
+      <div *ngIf="info.icon === 'phone'" class="contact-link">
+        <div class="contact-icon-wrapper">
+          <svg
+            class="contact-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+          >
+            <path
+              d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 0 0-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"
+            />
+          </svg>
+        </div>
+        <div class="contact-content">
+          <h3>{{ info.title }}</h3>
+          <a
+            class="contact-value"
+            *ngFor="let content of info.content"
+            [href]="'tel:' + content"
+          >
+            {{ content }}
+          </a>
+        </div>
+      </div>
+
+      <!-- Email - Clickable to send email -->
+      <div *ngIf="info.icon === 'email'" class="contact-link">
+        <div class="contact-icon-wrapper">
+          <svg
+            class="contact-icon"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="currentColor"
+          >
+            <path
+              d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"
+            />
+          </svg>
+        </div>
+        <div class="contact-content">
+          <h3>{{ info.title }}</h3>
+          <a
+            class="contact-value"
+            *ngFor="let content of info.content"
+            [href]="'mailto:' + content"
+          >
+            {{ content }}
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

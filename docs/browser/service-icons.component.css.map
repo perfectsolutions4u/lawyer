@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["angular:styles/component:css;18a2c67e999ab13755c726f2c5b67fd86efebb3a317291f7130920b22ce8745e;D:/wo0ork/angular projects/simple-website-portfolio-for-business-main/src/app/components/service-icons/service-icons.component.ts"],
+  "sourcesContent": ["\n      .service-icon-wrapper {\n        width: 100%;\n        height: 100%;\n        display: flex;\n        align-items: center;\n        justify-content: center;\n      }\n      .service-icon-wrapper ::ng-deep svg {\n        width: 100%;\n        height: 100%;\n        max-width: 80px;\n        max-height: 80px;\n      }\n    "],
+  "mappings": ";AACM,CAAC;AACC,SAAO;AACP,UAAQ;AACR,WAAS;AACT,eAAa;AACb,mBAAiB;AACnB;AACA,CAPC,qBAOqB,UAAU;AAC9B,SAAO;AACP,UAAQ;AACR,aAAW;AACX,cAAY;AACd;",
+  "names": []
+}

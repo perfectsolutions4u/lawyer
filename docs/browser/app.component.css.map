@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/app.component.css"],
+  "sourcesContent": ["/* Account for fixed navbar */\r\nmain {\r\n  min-height: calc(100vh - 200px);\r\n  padding-top: 0; /* Hero slider starts below navbar */\r\n}\r\n\r\n/* Ensure hero slider is visible below navbar */\r\napp-hero-slider {\r\n  display: block;\r\n  margin-top: 0;\r\n}\r\n\r\n"],
+  "mappings": ";AACA;AACE,cAAY,KAAK,MAAM,EAAE;AACzB,eAAa;AACf;AAGA;AACE,WAAS;AACT,cAAY;AACd;",
+  "names": []
+}

@@ -1,0 +1,29 @@
+<section class="page-header">
+  <div class="container" *ngIf="siteData">
+    <h1>{{ siteData.services.title }}</h1>
+    <p>حلول رقمية شاملة لتحويل أفكارك إلى واقع</p>
+  </div>
+</section>
+
+<section class="services container" *ngIf="siteData">
+  <div class="services-grid">
+    <div *ngFor="let service of siteData.services.items" class="service-card">
+      <i [class]="service.icon + ' service-icon'"></i>
+      <h3>{{ service.title }}</h3>
+      <p>{{ service.description }}</p>
+      <ul class="service-features" *ngIf="service.features">
+        <li *ngFor="let feature of service.features">{{ feature }}</li>
+      </ul>
+      <a routerLink="/contact" class="btn btn-primary">اطلب الخدمة</a>
+    </div>
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <h2>هل تحتاج إلى خدمة مخصصة؟</h2>
+    <p style="color: #aaa; margin: 15px 0 25px;">تواصل معنا لمناقشة احتياجاتك الخاصة ونقدم لك الحل الأمثل</p>
+    <a routerLink="/contact" class="btn btn-primary">تواصل معنا</a>
+  </div>
+</section>
+

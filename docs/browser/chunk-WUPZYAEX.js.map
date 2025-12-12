@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["src/app/services/data.service.ts"],
+  "sourcesContent": ["import { Injectable } from '@angular/core';\nimport { HttpClient } from '@angular/common/http';\nimport { Observable, of } from 'rxjs';\nimport { map, catchError } from 'rxjs/operators';\nimport { SiteData } from '../models/site-data.model';\n\n@Injectable({\n  providedIn: 'root'\n})\nexport class DataService {\n  private dataUrl = 'assets/data/data.json';\n  private cachedData: SiteData | null = null;\n\n  constructor(private http: HttpClient) {}\n\n  getSiteData(): Observable<SiteData> {\n    if (this.cachedData) {\n      return of(this.cachedData);\n    }\n\n    return this.http.get<SiteData>(this.dataUrl).pipe(\n      map(data => {\n        this.cachedData = data;\n        return data;\n      }),\n      catchError(error => {\n        console.error('Error loading site data:', error);\n        throw error;\n      })\n    );\n  }\n\n  clearCache(): void {\n    this.cachedData = null;\n  }\n}\n\n"],
+  "mappings": ";;;;;;;;;;;;AASM,IAAO,cAAP,MAAO,aAAW;EAIF;EAHZ,UAAU;EACV,aAA8B;EAEtC,YAAoB,MAAgB;AAAhB,SAAA,OAAA;EAAmB;EAEvC,cAAW;AACT,QAAI,KAAK,YAAY;AACnB,aAAO,GAAG,KAAK,UAAU;IAC3B;AAEA,WAAO,KAAK,KAAK,IAAc,KAAK,OAAO,EAAE,KAC3C,IAAI,UAAO;AACT,WAAK,aAAa;AAClB,aAAO;IACT,CAAC,GACD,WAAW,WAAQ;AACjB,cAAQ,MAAM,4BAA4B,KAAK;AAC/C,YAAM;IACR,CAAC,CAAC;EAEN;EAEA,aAAU;AACR,SAAK,aAAa;EACpB;;qCAzBW,cAAW,mBAAA,UAAA,CAAA;EAAA;4EAAX,cAAW,SAAX,aAAW,WAAA,YAFV,OAAM,CAAA;;",
+  "names": []
+}
