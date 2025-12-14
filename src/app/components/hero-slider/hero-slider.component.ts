@@ -133,14 +133,14 @@ export class HeroSliderComponent implements OnInit, OnDestroy {
   slides: Slide[] = [
     {
       id: 1,
-      imageUrl: "./assets/slider/slide1.webp",
+      imageUrl: "./assets/slider/1.png",
       title: "حماية حقوقك هي أولويتنا",
       ctaLabel: "تواصل معنا الأن ",
       ctaLink: "#contact",
     },
     {
       id: 2,
-      imageUrl: "./assets/slider/slide2.webp",
+      imageUrl: "./assets/slider/2.png",
       // badge: '',
       title: "خبرة قانونية تمتد لعقود من النجاح",
       // description: '',
@@ -149,7 +149,7 @@ export class HeroSliderComponent implements OnInit, OnDestroy {
     },
     {
       id: 3,
-      imageUrl: "./assets/slider/slide3.webp",
+      imageUrl: "./assets/slider/3.png",
       // badge: '',
       title: "نحقق العدالة والإنصاف لك",
       // description: '',

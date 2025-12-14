@@ -12,6 +12,7 @@ export interface SiteData {
       linkedin?: string;
       instagram?: string;
       youtube?: string;
+      whatsapp?: string;
     };
   };
   navigation: {

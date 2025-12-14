@@ -29,8 +29,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
     { label: "الرئيسية", link: "/" },
     { label: "من نحن", link: "about" },
     { label: "الخدمات", link: "services" },
-    { label: "المشاريع", link: "projects" },
-    { label: "المدونة", link: "blog" },
+    { label: "المقالات والأخبار", link: "blog" },
     { label: "اتصل بنا", link: "contact" },
   ];
 

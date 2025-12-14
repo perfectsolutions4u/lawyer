@@ -321,6 +321,16 @@
   border-color: #ff0000;
 }
 
+/* .social-link.whatsapp {
+  background: rgba(37, 211, 102, 0.1);
+  border-color: #25d366;
+} */
+
+.social-link.whatsapp:hover {
+  background: #25d366;
+  border-color: #25d366;
+}
+
 /* Footer Bottom */
 .footer-bottom {
   border-top: 1px solid rgba(255, 255, 255, 0.2);
